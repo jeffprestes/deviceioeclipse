@@ -4,6 +4,7 @@
 package com.paypal.developer.jeffprestes.demo.deviceioeclipse;
 
 import java.io.IOException;
+import java.security.InvalidParameterException;
 
 import jdk.dio.DeviceConfig;
 import jdk.dio.DeviceManager;
@@ -68,5 +69,55 @@ public class Switch {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	/**
+	 * Get the GPIO Pin status
+	 */
+	public boolean getStatus()	{
+		try {
+			return this.pinLight.getValue();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			System.err.println("Error when trying to get GPIO status: " + e.getLocalizedMessage());
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
+	
+	
+	/**
+	 * Blink the bulb
+	 * @param numberOfTimes you want the bulb blinks
+	 * @param timeItStillsOn the amount of time you want the bulb stills on before turn off
+	 */
+	public void blink(int numberOfTimes, int timeItStillsOn)		{
+		if (numberOfTimes<2)	{
+			throw new InvalidParameterException("You must define more than 2 times or use only switchOn and switchOff methods");
+		}
+		
+		if (timeItStillsOn < 500)	{
+			throw new InvalidParameterException("You must define at least 500ms or your audience won't be able to see the bulb blinks");
+		}
+		
+		for (byte a=0; a<numberOfTimes; a++)	{
+			this.switchOn();
+			try {
+				Thread.sleep(timeItStillsOn);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			this.switchOff();
+		}
+	}
+	
+	/**
+	 * Blink the bulb for one second
+	 * @param numberOfTimes you want the bulb blinks
+	 */
+	public void blink(int numberOfTimes)		{
+		this.blink(numberOfTimes, 1000);
 	}
 }
