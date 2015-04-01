@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.paypal.developer.jeffprestes.demo.deviceioeclipse;
+package src.com.paypal.developer.jeffprestes.demo.deviceioeclipse;
 
 /**
  * @author jprestes
