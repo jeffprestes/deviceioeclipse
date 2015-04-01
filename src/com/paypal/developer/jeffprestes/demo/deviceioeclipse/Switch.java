@@ -50,7 +50,7 @@ public class Switch {
 	 */
 	public void switchOn()	{
 		try {
-			this.pinLight.setValue(true);
+			this.pinLight.setValue(false);
 		} catch (IOException e) {
 			System.err.println("Error when a GPIO pin was being set ON: " + e.getLocalizedMessage());
 			// TODO Auto-generated catch block
@@ -63,7 +63,7 @@ public class Switch {
 	 */
 	public void switchOff()		{
 		try {
-			this.pinLight.setValue(false);
+			this.pinLight.setValue(true);
 		} catch (IOException e) {
 			System.err.println("Error when a GPIO pin was being set OFF: " + e.getLocalizedMessage());
 			// TODO Auto-generated catch block
