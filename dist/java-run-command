@@ -1,4 +1,1 @@
-sudo java 
--Djdk.dio.registry=dio.properties-raspberrypi 
--Djava.security.policy=gpio.policy 
--jar deviceioeclipse.jar 
+sudo java -Djdk.dio.registry=dio.properties-raspberrypi -Djava.security.policy=gpio.policy -jar deviceioeclipse.jar 

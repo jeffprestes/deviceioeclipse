@@ -20,7 +20,9 @@ public class Start {
 		
 		Switch mySwitch = new Switch();
 		
+		mySwitch.switchOff();
 		mySwitch.switchOn();
+		mySwitch.switchOff();
 		
 		try {
 			Thread.sleep(1000);
@@ -29,7 +31,7 @@ public class Start {
 			e.printStackTrace();
 		}
 		
-		mySwitch.switchOff();
+		mySwitch.switchOn();
 		
 	}
 
